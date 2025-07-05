@@ -168,7 +168,6 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let fishArray = [];
 let ripplesArray = [];
 
 const mouse = { x: null, y: null };
