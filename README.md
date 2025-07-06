@@ -82,10 +82,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                 Input Data Usaha
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Modal Usaha -->
-                <div class="space-y-4">
-                    <h3 class="text-lg font-semibold text-slate-300 border-b border-slate-600 pb-2">Modal Usaha</h3>
+            <div class="space-y-6">
+                <!-- Grup Modal Usaha -->
+                <div class="p-4 border border-slate-700 rounded-lg space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-300">Modal Usaha</h3>
                     <div>
                         <label for="harga_bibit" class="block text-sm font-medium mb-1">Harga Bibit (Rp / ekor)</label>
                         <input type="number" id="harga_bibit" placeholder="Contoh: 500" class="mt-1 block w-full p-3 rounded-md shadow-sm">
@@ -99,9 +99,9 @@
                         <input type="number" id="biaya_operasional" placeholder="Listrik, air, obat, dll." class="mt-1 block w-full p-3 rounded-md shadow-sm">
                     </div>
                 </div>
-                <!-- Data Panen -->
-                <div class="space-y-4">
-                    <h3 class="text-lg font-semibold text-slate-300 border-b border-slate-600 pb-2">Data Panen</h3>
+                <!-- Grup Data Panen -->
+                <div class="p-4 border border-slate-700 rounded-lg space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-300">Data Panen</h3>
                     <div>
                         <label for="jumlah_bibit" class="block text-sm font-medium mb-1">Jumlah Bibit Ditebar (ekor)</label>
                         <input type="number" id="jumlah_bibit" placeholder="Contoh: 1000" class="mt-1 block w-full p-3 rounded-md shadow-sm">
@@ -148,6 +148,7 @@
                  <div class="mt-4 space-y-2">
                     <div class="result-item"><span>BEP (Produksi)</span><span id="hasil-bep-produksi" class="font-bold text-lg"></span></div>
                     <div class="result-item"><span>BEP (Harga)</span><span id="hasil-bep-harga" class="font-bold text-lg"></span></div>
+                    <div class="result-item"><span>Rekomendasi Harga Jual (Minimal)</span><span id="hasil-rekomendasi-harga" class="font-bold text-lg"></span></div>
                     <div class="result-item"><span>R/C Ratio</span><span id="hasil-rc-ratio" class="font-bold text-lg"></span></div>
                 </div>
                 <div id="status-kelayakan" class="mt-6 text-center"></div>
@@ -253,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keuntungan: document.getElementById('hasil-keuntungan'),
             bepProduksi: document.getElementById('hasil-bep-produksi'),
             bepHarga: document.getElementById('hasil-bep-harga'),
+            rekomendasiHarga: document.getElementById('hasil-rekomendasi-harga'),
             rcRatio: document.getElementById('hasil-rc-ratio'),
             statusKelayakan: document.getElementById('status-kelayakan'),
         }
@@ -311,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         elements.outputs.bepProduksi.textContent = `${bepProduksi.toFixed(2)} kg`;
         elements.outputs.bepHarga.textContent = `${formatRupiah(bepHarga)} / kg`;
+        elements.outputs.rekomendasiHarga.textContent = `${formatRupiah(bepHarga)} / kg`;
         elements.outputs.rcRatio.textContent = rcRatio.toFixed(2);
         
         if (rcRatio > 1) {
